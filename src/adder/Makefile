@@ -2,6 +2,7 @@ SRC = $(wildcard *.cpp)
 
 OBJ = $(patsubst %.cpp, %.o, $(SRC))
 
+# !!! 替换成自己的systemc路径
 SYSTEMC_HOME := /home/dzw/systemc
 
 
@@ -26,7 +27,7 @@ prog: $(OBJ)
 	@$(CXX) $(CXXFLAGS) -c $< -o $@
 
 clean:
-	rm *.o *.vcd src
+	-rm *.o *.vcd src
 
 all: prog
 .PHONY: all
