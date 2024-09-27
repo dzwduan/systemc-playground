@@ -13,9 +13,9 @@ CXXFLAGS := ${INCLUDES}
 LDFLAGS := -L${SYSTEMC_HOME}/lib-linux64 
 
 
-LIBS :=    -lsystemc \
-	   -lfmt \
-	   -Wl,-rpath=${SYSTEMC_HOME}/lib-linux64 
+LIBS := -lsystemc \
+	    -lfmt \
+	    -Wl,-rpath=${SYSTEMC_HOME}/lib-linux64 
 
 
 MODULE_NAME := $(notdir $(shell pwd))
