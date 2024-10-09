@@ -13,35 +13,48 @@
 
 using namespace sc_core;
 
-SC_MODULE(QUEUE){
-    
-    sc_event e;
-    sc_event_queue eq;
+SC_MODULE(QUEUE) {
 
-    SC_CTOR(QUEUE) {
-        SC_THREAD(trigger);
-        SC_THREAD(catch_e);
-        sensitive << e;
+  sc_event e;
+  sc_event_queue eq;
 
-        dont_initialize(); // 仅对 cache_e生效
+  SC_CTOR(QUEUE) {
+    SC_THREAD(trigger);
+    SC_THREAD(catch_e);
+    sensitive << e;
 
-        SC_THREAD(catch_eq);
-        sensitive << eq;
-        dont_initialize(); // 仅对 cache_eq生效
+    dont_initialize(); // 仅对 cache_e生效
+
+    SC_THREAD(catch_eq);
+    sensitive << eq;
+    dont_initialize(); // 仅对 cache_eq生效
+  }
+
+  void trigger() {
+    while (true) {
+      e.notify(2, SC_SEC);
+      e.notify(1, SC_SEC);  // event只能处理最后一个
+
+      eq.notify(2, SC_SEC);
+      eq.notify(1, SC_SEC); // event queue能同时处理多个
+      wait(10, SC_SEC);
     }
+  }
 
-    void trigger() {
-
+  void catch_e() {
+    while (true) {
+      std::cout << sc_time_stamp() << " : catch e" << std::endl;
+      wait(); // static sensitive
     }
+  }
 
-    void catch_e() {
-
+  void catch_eq() {
+    while (true) {
+      std::cout << sc_time_stamp() << " : catch eq" << std::endl;
+      wait(); // static sensitive
     }
-
-    void catch_eq() {
-
-    }
- };
+  }
+};
 
 int sc_main(int argc, char *argv[]) {
   QUEUE process("queue");
