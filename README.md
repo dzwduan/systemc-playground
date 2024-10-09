@@ -1,19 +1,24 @@
-# systemc-playground
+# systemc and tlm tutorial
 
 ## 例程
 
-### BASIC
+basic主要参考 [learnsystemc](https://github.com/learnwithexamples/learnsystemc)，涉及systemc基础语法
 
-1. Simulation Process
-1. 
+1. simulation Process
+1. simulation Stages
+1. concurrency
+1. event
+1. combined events
+1. delta cycle
+1. sensivity
+1. initializtion
+1. method
+1. event_queue
+1. combined_event_queue
+1. mutex
+1. semaphore
+1. fifo
 
-## 术语
-
-interface ： c++抽象类
-
-port ：与interface关联，只能连接到实现该类interface的channel
-
-channel ：具体实现一个或多个interface，有primitive和hierarchical channel
 
 ## 参考
 
