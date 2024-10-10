@@ -42,10 +42,13 @@
 主要参考 [systemc tlm2 train](https://github.com/dzwduan/systemc_train) + [doulos tlm2](https://www.doulos.com/knowhow/systemc/tlm-20/)
 
 
+## Project
+
+主要参考 [multi-core processor model](https://github.com/zoranzhao/HCSim)
 
 
 
-## 参考
+## 可供参考的资料
 
 1. systemc片上系统设计   （版本太老）
 2. systemc电子系统级设计 （错误较多，版本太老，不建议看）

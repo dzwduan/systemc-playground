@@ -1,3 +1,5 @@
 .sv_cache
 compile_commands.json
 .vscode
+*.o
+emu
