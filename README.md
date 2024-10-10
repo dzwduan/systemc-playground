@@ -1,8 +1,8 @@
-# systemc and tlm tutorial
+# systemc and tlm2 tutorial
 
-## 例程
+## systemc basic
 
-basic主要参考 [learnsystemc](https://github.com/learnwithexamples/learnsystemc)，涉及systemc基础语法
+主要参考 [learnsystemc](https://github.com/learnwithexamples/learnsystemc)，涉及systemc基础语法
 
 1. simulation Process
 1. simulation Stages
@@ -24,6 +24,26 @@ basic主要参考 [learnsystemc](https://github.com/learnwithexamples/learnsyste
 1. resolved signal
 1. sc_signal<bool>
 1. buffer
+1. port
+1. export
+1. port to port
+1. specialized port
+1. port array
+1. primitive channel
+1. hierarchical channel
+1. trace
+1. error and message report
+1. customed data type
+1. clock
+1. cthread
+
+## TLM basic
+
+主要参考 [systemc tlm2 train](https://github.com/dzwduan/systemc_train) + [doulos tlm2](https://www.doulos.com/knowhow/systemc/tlm-20/)
+
+
+
+
 
 ## 参考
 
