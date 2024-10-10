@@ -18,7 +18,12 @@ basic主要参考 [learnsystemc](https://github.com/learnwithexamples/learnsyste
 1. mutex
 1. semaphore
 1. fifo
-
+1. signal_rw
+1. signal detect event
+1. signal many writers
+1. resolved signal
+1. sc_signal<bool>
+1. buffer
 
 ## 参考
 
