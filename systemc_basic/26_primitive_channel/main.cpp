@@ -34,6 +34,7 @@ sc_prim_channel:
 #include <systemc>
 using namespace sc_core;
 
+//============================= Interface =========================//
 
 // interface for interrupt generator
 class GEN_IF : public sc_interface {
@@ -47,12 +48,20 @@ public:
   virtual const sc_event& default_event()  const  = 0;
 };
 
+
+
+
+//============================== port =============================//
+
 // interrupt class 
 class INTERRUPT : public sc_prim_channel, public GEN_IF, public RECV_IF {
 public:
   INTERRUPT(sc_module_name name) : sc_prim_channel(name) {}
-  void notify() { e.notify();}
 
+  // implement gen-if
+  void notify() { e.notify();} 
+
+  // implement recv-if
   const sc_event& default_event() const {
     return e;
   }
@@ -62,8 +71,9 @@ private:
 };
 
 
+// interrupt generator 
 SC_MODULE(GEN) {
-
+// port to generate interrupt
   sc_port<GEN_IF> p;
 
   SC_CTOR(GEN) {
@@ -78,12 +88,31 @@ SC_MODULE(GEN) {
   }
 };
 
-
 SC_MODULE(RECV) {
 
+  sc_port<RECV_IF> p;
+
+  SC_CTOR(RECV) {
+    SC_THREAD(recv_interrupt);
+    sensitive << p;
+    dont_initialize();
+  }
+
+  void recv_interrupt() {
+    while (true) {
+       std::cout << sc_time_stamp() << ": interrupt received" << std::endl;
+       wait();
+    }
+  }
 };
 
+int sc_main(int argc, char *argv[]) {
+  GEN g("g");
+  RECV r("r");
+  INTERRUPT i("i");
+  g.p(i);
+  r.p(i);
 
-int sc_main(int argc, char *argv) {
-
+  sc_start(2, SC_SEC);
+  return 0;
 }

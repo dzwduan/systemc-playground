@@ -44,7 +44,7 @@
 
 ## Project
 
-主要参考 [multi-core processor model](https://github.com/zoranzhao/HCSim)
+主要参考 [multi-core processor model](https://github.com/zoranzhao/HCSim) + [cachesim](https://github.com/callMeBigBen/15618-CacheSim-Page)
 
 
 

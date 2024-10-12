@@ -2,4 +2,6 @@
 compile_commands.json
 .vscode
 *.o
+*.vcd
+*.log
 emu
