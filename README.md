@@ -39,6 +39,13 @@
 
 ## TLM basic
 
+1. b_transport
+1. nb_transport
+1. b and nb transport
+1. peq_with_get
+1. peq_with_cb_and_phase
+1. 
+
 主要参考 [systemc tlm2 train](https://github.com/dzwduan/systemc_train) + [doulos tlm2](https://www.doulos.com/knowhow/systemc/tlm-20/)
 
 
