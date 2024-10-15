@@ -80,14 +80,17 @@ public:
   sc_fifo<tlm::tlm_generic_payload *> resp_fifo;
 };
 
+
+
 // init  send req to  target
 void MyInitiator::SendReqThread() {
-  tlm::tlm_generic_payload *payload = new tlm::tlm_generic_payload();
+
   tlm::tlm_phase phase = tlm::BEGIN_REQ;
   sc_time delay = SC_ZERO_TIME;
   int cycle_cnt = 0;
   while (true) {
     cycle_cnt++;
+    tlm::tlm_generic_payload *payload = new tlm::tlm_generic_payload();
     delay = sc_time(cycle_cnt, SC_SEC);
     payload->set_address(0x1000 + cycle_cnt);
 
@@ -129,6 +132,7 @@ void MyInitiator::SendEndRespThread() {
 tlm::tlm_sync_enum
 MyInitiator::nb_transport_bw_func(tlm::tlm_generic_payload &payload,
                                   tlm::tlm_phase &phase, sc_time &delay) {
+
   switch (phase) {
     case tlm::END_REQ:
       std::cout << this->name() << sc_time_stamp() << "call nb_transport_fw, END_REQ phase, addr=0x" << std::hex << payload.get_address() << std::endl;
@@ -196,6 +200,7 @@ MyTarget::nb_transport_fw_func(tlm::tlm_generic_payload &payload,
   return tlm::TLM_ACCEPTED;
 }
 
+
 class MyTop : public sc_module {
 public:
   SC_CTOR(MyTop) : m_init("init"), m_target("target") {
@@ -208,6 +213,6 @@ public:
 
 int sc_main(int argc, char *argv[]) {
   MyTop top("top");
-  sc_start(20, sc_core::SC_NS);
+  sc_start(20, sc_core::SC_SEC);
   return 0;
 }

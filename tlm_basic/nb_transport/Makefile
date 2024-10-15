@@ -9,7 +9,7 @@ SYSTEMC_HOME := /home/dzw/systemc
 
 INCLUDES := -I${SYSTEMC_HOME}/include -I.
 
-CXXFLAGS := ${INCLUDES}
+CXXFLAGS := ${INCLUDES} -g
 
 LDFLAGS := -L${SYSTEMC_HOME}/lib-linux64 
 

@@ -180,9 +180,9 @@
   },
   "cmake.sourceDirectory": "/home/dzw/systemc-playground",
   "C_Cpp.default.includePath": [
-    "/home/dzw/systemc-2/src",
-    "/home/dzw/systemc-2/include/",
-    "/home/dzw/systemc-2/lib-linux64"
+    "/home/dzw/systemc/src",
+    "/home/dzw/systemc/include/",
+    "/home/dzw/systemc/lib-linux64"
   ],
   "files.watcherExclude": {
     "**/target": true
